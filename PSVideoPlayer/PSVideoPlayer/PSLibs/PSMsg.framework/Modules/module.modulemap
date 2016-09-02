@@ -1,0 +1,6 @@
+framework module PSMsg {
+  umbrella header "PSMsg.h"
+
+  export *
+  module * { export * }
+}
