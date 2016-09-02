@@ -87,10 +87,12 @@ static const CGFloat kPlayerControl_BarHeight = 50;
     if (!_collectButton)
     {
         _collectButton = NewButton();
-        _collectButton.tag = PSPlayerControlClickState_Collect;
+        _collectButton.tag = PSPlayerControlClickState_UnCollect;
         _collectButton.userInteractionEnabled = YES;
-        _collectButton.backgroundColor = [UIColor redColor];
         
+        [_collectButton setImage:[UIImage imageNamed:@"ic_ypmd_collection_nor"] forState:(UIControlStateNormal)];
+        [_collectButton setImage:[UIImage imageNamed:@"ic_ypmd_collection_sel"] forState:(UIControlStateSelected)];
+
         [_collectButton addTarget:self action:@selector(ps_clickTopBarEvent:) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _collectButton;
@@ -102,6 +104,19 @@ static const CGFloat kPlayerControl_BarHeight = 50;
     PSLog(@"%s  state : %ld",__func__,(PSPlayerControlClickState)sender.tag);
     
     PSPlayerControlClickState state = (PSPlayerControlClickState)sender.tag;
+    
+    if (sender == _collectButton) {
+        _collectButton.selected = !_collectButton.selected;
+        
+        if (_collectButton.selected) {
+            state = PSPlayerControlClickState_Collect;
+        }
+        else
+        {
+            state = PSPlayerControlClickState_UnCollect;
+
+        }
+    }
     
     if (self.onClickTopBarBlock)
     {
@@ -900,6 +915,8 @@ static const CGFloat kVideoVolumeIndicatorViewSize = 118.0;
         [self addGestureRecognizer:tap];
         
         self.isBarShowing = YES;
+        
+        [self ps_PlayerStopLoadAnimating];
         
     }
     return self;

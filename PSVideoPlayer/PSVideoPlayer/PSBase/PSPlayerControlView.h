@@ -14,7 +14,8 @@ typedef NS_ENUM(NSInteger , PSPlayerControlClickState)
     PSPlayerControlClickState_Back = 0, //返回
     
     PSPlayerControlClickState_Collect , //收藏
-    
+    PSPlayerControlClickState_UnCollect , //cancel收藏
+
     PSPlayerControlClickState_Lock,  //锁屏
     
     PSPlayerControlClickState_UnLock,  //解屏

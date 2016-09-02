@@ -56,6 +56,10 @@
 		15A394321D79491600EF2CF3 /* zx-video-player-volumeMute@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15A394151D79491600EF2CF3 /* zx-video-player-volumeMute@3x.png */; };
 		15A394351D79541F00EF2CF3 /* PSMoviePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A394341D79541F00EF2CF3 /* PSMoviePlayer.m */; };
 		15A394381D79599200EF2CF3 /* PSMoviePlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A394371D79599200EF2CF3 /* PSMoviePlayerController.m */; };
+		15A3943D1D7974E900EF2CF3 /* ic_ypmd_collection_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15A394391D7974E900EF2CF3 /* ic_ypmd_collection_nor@2x.png */; };
+		15A3943E1D7974E900EF2CF3 /* ic_ypmd_collection_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15A3943A1D7974E900EF2CF3 /* ic_ypmd_collection_nor@3x.png */; };
+		15A3943F1D7974E900EF2CF3 /* ic_ypmd_collection_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15A3943B1D7974E900EF2CF3 /* ic_ypmd_collection_sel@2x.png */; };
+		15A394401D7974E900EF2CF3 /* ic_ypmd_collection_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15A3943C1D7974E900EF2CF3 /* ic_ypmd_collection_sel@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +153,10 @@
 		15A394341D79541F00EF2CF3 /* PSMoviePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSMoviePlayer.m; sourceTree = "<group>"; };
 		15A394361D79599200EF2CF3 /* PSMoviePlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSMoviePlayerController.h; sourceTree = "<group>"; };
 		15A394371D79599200EF2CF3 /* PSMoviePlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSMoviePlayerController.m; sourceTree = "<group>"; };
+		15A394391D7974E900EF2CF3 /* ic_ypmd_collection_nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_ypmd_collection_nor@2x.png"; sourceTree = "<group>"; };
+		15A3943A1D7974E900EF2CF3 /* ic_ypmd_collection_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_ypmd_collection_nor@3x.png"; sourceTree = "<group>"; };
+		15A3943B1D7974E900EF2CF3 /* ic_ypmd_collection_sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_ypmd_collection_sel@2x.png"; sourceTree = "<group>"; };
+		15A3943C1D7974E900EF2CF3 /* ic_ypmd_collection_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_ypmd_collection_sel@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,6 +340,10 @@
 				15A394131D79491600EF2CF3 /* zx-video-player-volume@3x.png */,
 				15A394141D79491600EF2CF3 /* zx-video-player-volumeMute@2x.png */,
 				15A394151D79491600EF2CF3 /* zx-video-player-volumeMute@3x.png */,
+				15A394391D7974E900EF2CF3 /* ic_ypmd_collection_nor@2x.png */,
+				15A3943A1D7974E900EF2CF3 /* ic_ypmd_collection_nor@3x.png */,
+				15A3943B1D7974E900EF2CF3 /* ic_ypmd_collection_sel@2x.png */,
+				15A3943C1D7974E900EF2CF3 /* ic_ypmd_collection_sel@3x.png */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -458,9 +470,13 @@
 				15A3941C1D79491600EF2CF3 /* kr-video-player-pause@3x.png in Resources */,
 				15A394221D79491600EF2CF3 /* kr-video-player-shrinkscreen@3x.png in Resources */,
 				15A3942F1D79491600EF2CF3 /* zx-video-player-volume@2x.png in Resources */,
+				15A394401D7974E900EF2CF3 /* ic_ypmd_collection_sel@3x.png in Resources */,
 				15A394231D79491600EF2CF3 /* zx-video-banner-back.png in Resources */,
+				15A3943D1D7974E900EF2CF3 /* ic_ypmd_collection_nor@2x.png in Resources */,
 				15A394211D79491600EF2CF3 /* kr-video-player-shrinkscreen@2x.png in Resources */,
+				15A3943E1D7974E900EF2CF3 /* ic_ypmd_collection_nor@3x.png in Resources */,
 				15A393A91D79107F00EF2CF3 /* Assets.xcassets in Resources */,
+				15A3943F1D7974E900EF2CF3 /* ic_ypmd_collection_sel@2x.png in Resources */,
 				15A394181D79491600EF2CF3 /* kr-video-player-close@3x.png in Resources */,
 				15A394271D79491600EF2CF3 /* zx-video-player-fastForward@2x.png in Resources */,
 				15A3941B1D79491600EF2CF3 /* kr-video-player-pause@2x.png in Resources */,
