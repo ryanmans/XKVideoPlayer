@@ -11,8 +11,8 @@
 
 #import "PSMPMoviePlayerViewController.h"
 #import "PSAVPlayerViewController.h"
-@interface PSMainViewController ()
-
+@interface PSMainViewController ()<UIActionSheetDelegate>
+@property(nonatomic,strong)PSVideo * video;
 @end
 
 @implementation PSMainViewController
@@ -56,35 +56,51 @@
 {
     
     NSURL *videoURL = [[NSBundle mainBundle] URLForResource:@"150511_JiveBike" withExtension:@"mov"];
-    PSVideo *video = NewClass(PSVideo);
-    video.playUrl = videoURL.absoluteString;
-    video.title = @"local";
+    self.video = NewClass(PSVideo);
+     self.video.playUrl = videoURL.absoluteString;
+     self.video.title = @"Local Movie";
     
-    PSMPMoviePlayerViewController * movieVC = NewClass(PSMPMoviePlayerViewController);
-    movieVC.video = video;
-    movieVC.hidesBottomBarWhenPushed = YES;
-    
-    [self.navigationController pushViewController:movieVC animated:YES];
-    
+    [self showActionSheet];
+
 }
 
 - (void)playNetVideo
 {
-//    NSURL *videoURL = [[NSBundle mainBundle] URLForResource:@"150511_JiveBike" withExtension:@"mov"];
-//    PSVideo *video = NewClass(PSVideo);
-//    video.playUrl = videoURL.absoluteString;
-//    video.title = @"local";
-    
-    PSVideo *video = [[PSVideo alloc] init];
-    video.playUrl = @"http://baobab.wdjcdn.com/1451897812703c.mp4";
-    video.title = @"Rollin'Wild 圆滚滚的";
+    self.video = [[PSVideo alloc] init];
+    self.video.playUrl = @"http://baobab.wdjcdn.com/1451897812703c.mp4";
+    self.video.title = @"Rollin'Wild 圆滚滚的";
 
-    PSAVPlayerViewController * movieVC = NewClass(PSAVPlayerViewController);
-    movieVC.video = video;
-    movieVC.hidesBottomBarWhenPushed = YES;
-    
-    [self.navigationController pushViewController:movieVC animated:YES];
+    [self showActionSheet];
 }
+
+- (void)showActionSheet
+{
+    UIActionSheet * sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"Use MPMoviePlayer",@"Use AVPlayer", nil];
+    [sheet showInView:self.view];
+}
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [actionSheet removeFromSuperview];
+    
+    if (buttonIndex == 0 ) {
+        
+        PSMPMoviePlayerViewController * movieVC = NewClass(PSMPMoviePlayerViewController);
+        movieVC.video = self.video;
+        movieVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:movieVC animated:YES];
+
+    }else if (buttonIndex == 1)
+    {
+        
+        PSAVPlayerViewController * movieVC = NewClass(PSAVPlayerViewController);
+        movieVC.video = self.video;
+        movieVC.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:movieVC animated:YES];
+    }
+}
+
+
 
 
 - (void)didReceiveMemoryWarning {

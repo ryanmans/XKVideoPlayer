@@ -226,7 +226,7 @@ typedef NS_ENUM(NSInteger,PSPanDirection)
 #pragma mark - PSPlayerControlDelegate -
 - (void)ps_PlayerControlView:(PSPlayerControlView *)playerControl withClickState:(PSPlayerControlClickState)state
 {
-    if (state == PSPlayerControlClickState_Back)[self ps_PlayVideo];
+    if (state == PSPlayerControlClickState_Back)[self ps_PlayerBack];
     else if (state == PSPlayerControlClickState_Collect)[self ps_PlayVideo];
     else if (state == PSPlayerControlClickState_Play)[self ps_PlayVideo];
     else if (state == PSPlayerControlClickState_Pause)[self ps_PauseVideo];
