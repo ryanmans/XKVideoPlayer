@@ -29,6 +29,8 @@
 
 注：如果需要自定义播放器的样式，可以选择`MPMoviePlayerController `和`AVPlayer ` 进行拓展，在此很显然`MPMoviePlayerViewController ` 已经不是适合使用了。但对于更好的选择，建议使用 `AVPlayer `，可以更好的兼容以及满足需求，毕竟在 "iOS系统9.0"之后`MPMoviePlayerController `已然弃用了。
 
+但是无论是`MPMoviePlayerController`还是`AVPlayer`支持的视频编码格式很有限：`H.264、MPEG-4，扩展名（压缩格式）：.mp4、.mov、.m4v、.m2v、.3gp、.3g2`等。
+
 
 ##  PSVideoPlayer 
 
