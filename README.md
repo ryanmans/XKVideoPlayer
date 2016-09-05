@@ -18,6 +18,7 @@
   
 #### 二、 `<AVFoundation/AVFoundation.h>`
  
+
 ##### 1. AVPlayer
 
   `AVPlayer`本身并不能显示视频，而且它也不像`MPMoviePlayerController` 有一个view的属性。如果`AVPlayer`要显示必须创建一个播放器层`AVPlayerLayer`用于展示，播放器层继承于`CALayer`，有了AVPlayerLayer之添加到控制器视图的layer中即可。
