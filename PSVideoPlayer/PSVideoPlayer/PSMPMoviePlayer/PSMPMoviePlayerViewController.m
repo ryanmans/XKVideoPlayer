@@ -65,7 +65,7 @@
         return;
     }
     
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     
     self.isNaiBarHidenMode = YES;
     [self.view addSubview:self.mpPlayerControl];
@@ -88,7 +88,7 @@
         return;
     }
     
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
     
     self.isNaiBarHidenMode = NO;
     
