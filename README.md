@@ -59,6 +59,6 @@
 ![](PSVideoPlayer/PSPng/屏幕快照 2016-09-05 下午2.57.27.png)
 
 #### 动画展示：
-![](/Users/admin/Desktop/Ryan_Man/Private Project/PSVideoPlayer/PSVideoPlayer/PSPng/PSPlayer.gif)
+![](PSVideoPlayer/PSPng/PSPlayer.gif)
 
 #### Demo 地址：`https://github.com/RyanMans/PSVideoPlayer`
