@@ -8,13 +8,13 @@
 
   在iOS中播放视频，可以使用`MPMoviePlayerController `类来完成，该类具备一般的播放器控制功能，例如播放、暂停、停止等。但是其自身并不是一个完整的视频的视图控制器，而是继承于`NSObject`的一个对象。如果要在UI中展现视频需将`其view属性`添加到界面中。
  
- ![](/Users/admin/Desktop/屏幕快照 2016-09-05 下午2.28.46.png)
+ ![](PSVideoPlayer/PSPng/屏幕快照 2016-09-05 下午2.28.46.png)
  
 ##### 2. MPMoviePlayerViewController  (iOS 2.0 ~ 9.0)
   
   `MPMoviePlayerViewController`继承于`UIViewController`，默认是全屏模式展示、弹出后自动播放、作为模态窗口展示时,如果点击“Done”按钮会自动退出模态窗口等。
    
- ![](/Users/admin/Desktop/屏幕快照 2016-09-05 下午2.28.08.png)
+ ![](PSVideoPlayer/PSPng/屏幕快照 2016-09-05 下午2.28.08.png)
   
 #### 二、 `<AVFoundation/AVFoundation.h>`
  
@@ -22,7 +22,7 @@
 
   `AVPlayer`本身并不能显示视频，而且它也不像`MPMoviePlayerController` 有一个view的属性。如果`AVPlayer`要显示必须创建一个播放器层`AVPlayerLayer`用于展示，播放器层继承于`CALayer`，有了AVPlayerLayer之添加到控制器视图的layer中即可。
   
-![](/Users/admin/Desktop/屏幕快照 2016-09-05 下午2.25.50.png)
+![](PSVideoPlayer/PSPng/屏幕快照 2016-09-05 下午2.25.50.png)
  
 #### 附录
 
@@ -44,17 +44,17 @@
 
 ##### 1.PSMoviePlayer  (播放器对象 iOS 2.0 ~ 9.0)
 
-![](/Users/admin/Desktop/屏幕快照 2016-09-05 下午2.51.20.png)
+![](PSVideoPlayer/PSPng/屏幕快照 2016-09-05 下午2.51.20.png)
 
 ##### 2.PSPlayer (播放器对象)
 
-![](/Users/admin/Desktop/屏幕快照 2016-09-05 下午2.53.45.png)
+![](PSVideoPlayer/PSPng/屏幕快照 2016-09-05 下午2.53.45.png)
 
 ##### 3.PSVideo (视频对象) 
-![](/Users/admin/Desktop/屏幕快照 2016-09-05 下午2.55.23.png)
+![](PSVideoPlayer/PSPng/屏幕快照 2016-09-05 下午2.55.23.png)
 
-##### 4.PSVideo (功能菜单) 
-![](/Users/admin/Desktop/屏幕快照 2016-09-05 下午2.57.11.png)
-![](/Users/admin/Desktop/屏幕快照 2016-09-05 下午2.57.27.png)
+##### 4.PSPlayerControlView (功能菜单) 
+![](PSVideoPlayer/PSPng/屏幕快照 2016-09-05 下午2.57.11.png)
+![](PSVideoPlayer/PSPng/屏幕快照 2016-09-05 下午2.57.27.png)
 
 #### Demo 地址：`https://github.com/RyanMans/PSVideoPlayer`
