@@ -866,6 +866,7 @@ static const CGFloat kVideoVolumeIndicatorViewSize = 118.0;
 @property (nonatomic,weak)PSProgressHUD * hud;
 @property (nonatomic,strong)UIButton * lockButton;
 
+@property (nonatomic,strong)UIButton * playButton;
 
 @property (nonatomic, assign) BOOL isLocked;
 @property (nonatomic,assign)BOOL isBarShowing;
@@ -901,6 +902,9 @@ static const CGFloat kVideoVolumeIndicatorViewSize = 118.0;
         //锁屏
         [self addSubview:self.lockButton];
         
+        //暂停模式下的 播放按钮
+        [self addSubview:self.playButton];
+        
         // 快进、快退指示器
         [self addSubview:self.timeIndicatorView];
         
@@ -915,6 +919,8 @@ static const CGFloat kVideoVolumeIndicatorViewSize = 118.0;
         [self addGestureRecognizer:tap];
         
         self.isBarShowing = YES;
+        self.playButton.hidden = YES;
+        self.hud.hidden = YES;
         
         [self ps_PlayerStopLoadAnimating];
         
@@ -949,6 +955,8 @@ static const CGFloat kVideoVolumeIndicatorViewSize = 118.0;
     self.lockButton.frame =  CGRectMake(CGRectGetMinX(self.bounds) + HalfF(20), (CGRectGetHeight(self.bounds) - HalfF(80)) / 2, HalfF(80),  HalfF(80));
     
     [self.lockButton setLayerWithCr:self.lockButton.width / 2];
+    
+    self.playButton.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     
     self.hud.frame = CGRectMake((CGRectGetWidth(self.bounds) - HalfF(120)) / 2 , (CGRectGetHeight(self.bounds) - HalfF(120)) / 2, HalfF(120), HalfF(120));
     
@@ -1049,15 +1057,48 @@ static const CGFloat kVideoVolumeIndicatorViewSize = 118.0;
     return _lockButton;
 }
 
+- (UIButton*)playButton
+{
+    if (!_playButton) {
+    
+        _playButton = NewButton();
+        _playButton.bounds = CGRectMake(0, 0, HalfF(100), HalfF(100));
+        _playButton.userInteractionEnabled = YES;
+        [_playButton setImage:[UIImage imageNamed:@"ic_video_play"] forState:(UIControlStateNormal)];
+        [_playButton addTarget:self action:@selector(ps_PlayButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
+    }
+    
+    return _playButton;
+    
+}
+
+
 - (CGFloat)changeValue
 {
     return self.bottomBar.progressSlider.value;
+}
+
+- (void)setIsFullscreenMode:(BOOL)isFullscreenMode
+{
+    _isFullscreenMode = isFullscreenMode;
+    
+    self.bottomBar.fullScreenButton.hidden = _isFullscreenMode;
+    self.bottomBar.shrinkScreenButton.hidden = !_isFullscreenMode;
+}
+
+- (void)setIsNaviBarHideMode:(BOOL)isNaviBarHideMode
+{
+    _isNaviBarHideMode = isNaviBarHideMode;
+    self.topBar.backButton.hidden = !_isNaviBarHideMode;
+    self.topBar.titleLabel.hidden = !_isNaviBarHideMode;
 }
 
 - (void)setVideo:(PSVideo *)video
 {
     _video = video;
     self.topBar.titleLabel.text = _video.title;
+    
+    self.hud.hidden = YES;
 }
 
 - (void)setTimePlayState:(PSTimeIndicatorPlayState)timePlayState
@@ -1122,6 +1163,18 @@ static const CGFloat kVideoVolumeIndicatorViewSize = 118.0;
 //MARK : Method
 - (void)ps_ClickPlayerControlState:(PSPlayerControlClickState)state
 {
+    
+    if (state == PSPlayerControlClickState_FullScreen && self.isNaviBarHideMode == NO) {
+    
+        self.topBar.backButton.hidden = NO;
+        self.topBar.titleLabel.hidden = NO;
+    }
+    else if ((state == PSPlayerControlClickState_ShrinkScreen || state == PSPlayerControlClickState_Back) && self.isNaviBarHideMode == NO)
+    {
+        self.topBar.backButton.hidden = YES;
+        self.topBar.titleLabel.hidden = YES;
+    }
+    
     if (self.delegate && IsHasSelector(self.delegate, @selector(ps_PlayerControlView:withClickState:)))
     {
         [self.delegate ps_PlayerControlView:self withClickState:state];
@@ -1162,10 +1215,17 @@ static const CGFloat kVideoVolumeIndicatorViewSize = 118.0;
     }
 }
 
+- (void)ps_PlayButtonClick:(UIButton*)sender
+{
+    sender.hidden = YES;
+    [self ps_ClickPlayerControlState:PSPlayerControlClickState_Play];
+}
+
 //播放状态
 - (void)ps_PlaybackStatePlaying:(BOOL)isPlaying
 {
     self.bottomBar.pauseButton.hidden = !isPlaying;
+    self.playButton.hidden = isPlaying;
     self.bottomBar.playButton.hidden = isPlaying;
 }
 

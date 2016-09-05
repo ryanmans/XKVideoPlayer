@@ -60,6 +60,7 @@
 		15A3943E1D7974E900EF2CF3 /* ic_ypmd_collection_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15A3943A1D7974E900EF2CF3 /* ic_ypmd_collection_nor@3x.png */; };
 		15A3943F1D7974E900EF2CF3 /* ic_ypmd_collection_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15A3943B1D7974E900EF2CF3 /* ic_ypmd_collection_sel@2x.png */; };
 		15A394401D7974E900EF2CF3 /* ic_ypmd_collection_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15A3943C1D7974E900EF2CF3 /* ic_ypmd_collection_sel@3x.png */; };
+		15E2C98B1D7D1C3F00F217D9 /* ic_video_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 15E2C98A1D7D1C3F00F217D9 /* ic_video_play.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +158,7 @@
 		15A3943A1D7974E900EF2CF3 /* ic_ypmd_collection_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_ypmd_collection_nor@3x.png"; sourceTree = "<group>"; };
 		15A3943B1D7974E900EF2CF3 /* ic_ypmd_collection_sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_ypmd_collection_sel@2x.png"; sourceTree = "<group>"; };
 		15A3943C1D7974E900EF2CF3 /* ic_ypmd_collection_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_ypmd_collection_sel@3x.png"; sourceTree = "<group>"; };
+		15E2C98A1D7D1C3F00F217D9 /* ic_video_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_video_play.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,6 +346,7 @@
 				15A3943A1D7974E900EF2CF3 /* ic_ypmd_collection_nor@3x.png */,
 				15A3943B1D7974E900EF2CF3 /* ic_ypmd_collection_sel@2x.png */,
 				15A3943C1D7974E900EF2CF3 /* ic_ypmd_collection_sel@3x.png */,
+				15E2C98A1D7D1C3F00F217D9 /* ic_video_play.png */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				15A3941A1D79491600EF2CF3 /* kr-video-player-fullscreen@3x.png in Resources */,
 				15A393A71D79107F00EF2CF3 /* Main.storyboard in Resources */,
 				15A3942A1D79491600EF2CF3 /* zx-video-player-lock@3x.png in Resources */,
+				15E2C98B1D7D1C3F00F217D9 /* ic_video_play.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -763,6 +767,7 @@
 				15A393C81D79108000EF2CF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		15A393C91D79108000EF2CF3 /* Build configuration list for PBXNativeTarget "PSVideoPlayerTests" */ = {
 			isa = XCConfigurationList;
@@ -771,6 +776,7 @@
 				15A393CB1D79108000EF2CF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		15A393CC1D79108000EF2CF3 /* Build configuration list for PBXNativeTarget "PSVideoPlayerUITests" */ = {
 			isa = XCConfigurationList;
@@ -779,6 +785,7 @@
 				15A393CE1D79108000EF2CF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

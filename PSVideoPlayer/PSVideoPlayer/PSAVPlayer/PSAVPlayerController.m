@@ -117,6 +117,20 @@ typedef NS_ENUM(NSInteger,PSPanDirection)
     [self.playerControlView  setNeedsLayout]; //重新布局子视图
 }
 
+- (void)setIsFullscreenMode:(BOOL)isFullscreenMode
+{
+    _isFullscreenMode = isFullscreenMode;
+    
+    self.playerControlView.isFullscreenMode = _isFullscreenMode;
+}
+
+- (void)setIsNaiBarHidenMode:(BOOL)isNaiBarHidenMode
+{
+    _isNaiBarHidenMode = isNaiBarHidenMode;
+    
+    self.playerControlView.isNaviBarHideMode = _isNaiBarHidenMode;
+}
+
 //视频数据
 - (void)setVideo:(PSVideo *)video
 {
@@ -247,7 +261,6 @@ typedef NS_ENUM(NSInteger,PSPanDirection)
         if (self.onPlayerControlWillGoBackBlock) {
             self.onPlayerControlWillGoBackBlock();
         }
-        
     }
     else
     {

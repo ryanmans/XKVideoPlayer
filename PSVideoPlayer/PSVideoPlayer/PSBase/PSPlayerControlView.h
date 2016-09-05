@@ -14,6 +14,7 @@ typedef NS_ENUM(NSInteger , PSPlayerControlClickState)
     PSPlayerControlClickState_Back = 0, //返回
     
     PSPlayerControlClickState_Collect , //收藏
+    
     PSPlayerControlClickState_UnCollect , //cancel收藏
 
     PSPlayerControlClickState_Lock,  //锁屏
@@ -61,7 +62,14 @@ typedef NS_ENUM(NSUInteger, PSTimeIndicatorPlayState)
 
 @property (nonatomic,weak)id<PSPlayerControlDelegate>delegate;
 
+//导航栏模式
+@property (nonatomic,assign)BOOL isNaviBarHideMode;
+
 @property (nonatomic,strong)PSVideo * video;
+
+// 是否已经全屏模式
+@property (nonatomic, assign) BOOL isFullscreenMode;
+
 
 //是否锁屏
 @property (nonatomic, assign,readonly) BOOL isLocked;

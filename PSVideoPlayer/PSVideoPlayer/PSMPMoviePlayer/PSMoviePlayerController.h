@@ -12,6 +12,9 @@
 //视频播放器
 @interface PSMoviePlayerController : UIView
 
+//导航栏隐藏模式
+@property(nonatomic,assign)BOOL isNaiBarHidenMode;
+
 @property (nonatomic,strong)PSVideo * video;
 
 //放回
