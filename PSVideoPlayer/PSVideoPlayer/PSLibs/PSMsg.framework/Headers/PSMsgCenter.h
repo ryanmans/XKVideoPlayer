@@ -11,6 +11,8 @@
 
 #define _API_UNAVAILABLE(INFO)    __attribute__((unavailable(INFO)))
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class PSMsgCenter;
 
 @protocol PSMsgDispatcherDelegate <NSObject>
@@ -23,7 +25,7 @@
  *  @param sender 消息发送者
  *  @param param  传递的参数
  */
-- (void)ps_DidReceivedMessage: (NSString * __nonnull)type msgDispatcher: (PSMsgCenter * __nonnull)sender userParam:(__nullable id)param;
+- (void)ps_DidReceivedMessage: (NSString *)type msgDispatcher: (PSMsgCenter *)sender userParam:(__nullable id)param;
 @end
 
 
@@ -46,7 +48,7 @@
  *  @param msg     消息类型
  *  @param param   传递的参数
  */
-- (void)ps_SendMessage: (NSString * __nonnull)msg userParam: (nullable id)param;
+- (void)ps_SendMessage: (NSString *)msg userParam: (nullable id)param;
 
 /**
  *  发送消息 (仅仅支持单个)
@@ -54,7 +56,7 @@
  *  @param msg     消息类型
  *  @param param    传递的参数
  */
-- (void)ps_DispatchMessageAsync: (NSString * __nonnull)msg userParam: (nullable id)param;
+- (void)ps_DispatchMessageAsync: (NSString *)msg userParam: (nullable id)param;
 
 /**
  *  添加消息监听(是异步发送消息，如有ui操作，请再重回主线程)
@@ -64,7 +66,7 @@
  *
  *  @return
  */
-- (BOOL)ps_AddReceiver:(id<PSMsgDispatcherDelegate> __nonnull)obj type:(NSString * __nonnull)type;
+- (BOOL)ps_AddReceiver:(id<PSMsgDispatcherDelegate>)obj type:(NSString * __nonnull)type;
 
 
 #pragma mark - NSNotificationCenter  -
@@ -92,7 +94,7 @@ void ps_RemovePost(id observer,NSString * name);
  *  @param name   监听的名字
  *  @param object 发送的数据，没有就填nil
  */
-void ps_Post(NSString *name, id object);
+void ps_Post(NSString *name, id  _Nullable object);
 
 
 #pragma mark - GCD Thread-
@@ -119,3 +121,4 @@ void runBlockWithAsync(dispatch_block_t block);
  */
 void runBlock(dispatch_block_t asyncBlock, dispatch_block_t syncBlock);
 @end
+NS_ASSUME_NONNULL_END

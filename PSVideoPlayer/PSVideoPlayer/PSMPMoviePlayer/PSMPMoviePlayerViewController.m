@@ -198,7 +198,7 @@
     //1.
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
-    //2.
+    //2.全屏下父视图 调整 frame
     self.displayTableView.frame = self.view.bounds;
     self.displayTableView.scrollEnabled = NO;
     
@@ -227,7 +227,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     
-    //2.
+    //2.全屏下父视图 调整 frame
     self.displayTableView.frame = self.view.bounds;
     self.displayTableView.scrollEnabled = YES;
     
