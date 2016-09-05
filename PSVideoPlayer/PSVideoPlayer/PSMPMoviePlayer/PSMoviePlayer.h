@@ -10,7 +10,6 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 #import "PSVideo.h"
-
 typedef NS_ENUM(NSUInteger, PSMoviePlayerState)
 {
     PSMoviePlayerState_PlaybackState = 0,
@@ -29,7 +28,7 @@ typedef NS_ENUM(NSUInteger, PSMoviePlayerState)
 // 系统音量slider
 @property (nonatomic, strong,readonly) UISlider *volumeViewSlider;
 
-
+//初始化
 - (instancetype)initWithFrame:(CGRect)frame;
 
 //数据刷新

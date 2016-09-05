@@ -14,7 +14,6 @@
 @property (nonatomic,strong,readonly)AVPlayer * player;
 @property (nonatomic,strong,readonly)PSVideo * video;
 
-
 //监听播放状态
 @property (nonatomic,copy)void (^onPlayerStatusBlock)(NSString * keyPath ,AVPlayerItem * playerItem);
 
@@ -26,6 +25,5 @@
 
 //播放器音量设置
 - (void)ps_PlayerVolumeSeting:(CGFloat)value;
-
 
 @end
