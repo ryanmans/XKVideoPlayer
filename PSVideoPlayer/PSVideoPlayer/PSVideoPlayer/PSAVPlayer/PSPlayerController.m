@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Ryan_Man. All rights reserved.
 //
 
-#import "PSAVPlayerController.h"
+#import "PSPlayerController.h"
 #import "PSPlayer.h"
 
 #import "PSPlayerControlView.h"
@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger,PSPanDirection)
     PSPanDirectionVertical,   // 纵向移动
 };
 
-@interface PSAVPlayerController () <UIGestureRecognizerDelegate,PSPlayerControlDelegate>
+@interface PSPlayerController () <UIGestureRecognizerDelegate,PSPlayerControlDelegate>
 @property (nonatomic,strong)PSPlayer * avPlayer;
 @property (nonatomic,strong)PSPlayerControlView * playerControlView;
 
@@ -50,7 +50,7 @@ typedef NS_ENUM(NSInteger,PSPanDirection)
 @end
 
 
-@implementation PSAVPlayerController
+@implementation PSPlayerController
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -168,7 +168,7 @@ typedef NS_ENUM(NSInteger,PSPanDirection)
             [self ps_MonitoringPlayBack:playerItem];
             
         }
-        else if (playerItem.status == AVPlayerStatusFailed)
+        else if (playerItem.status == AVPlayerStatusFailed || playerItem.status == AVPlayerStatusUnknown)
         {
             PSLog(@"AVPlayerStatusFailed");
         }

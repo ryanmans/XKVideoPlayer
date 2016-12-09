@@ -86,7 +86,7 @@ void ps_AddPost(id observer, SEL selector,NSString * name);
  *  @param observer
  *  @param name     监听的名字
  */
-void ps_RemovePost(id observer,NSString * name);
+void ps_RemovePost(id observer,NSString * _Nullable name);
 
 /**
  *  发送一个消息监听

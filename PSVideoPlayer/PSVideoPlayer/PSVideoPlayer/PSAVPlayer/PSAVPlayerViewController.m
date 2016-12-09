@@ -7,7 +7,7 @@
 //
 
 #import "PSAVPlayerViewController.h"
-#import "PSAVPlayerController.h"
+#import "PSPlayerController.h"
 
 #import "PSVideo.h"
 @interface PSAVPlayerViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
@@ -17,7 +17,8 @@
 }
 @property (nonatomic,assign)BOOL isNaiBarHidenMode;
 @property (nonatomic,strong)UITableView * displayTableView;
-@property (nonatomic,strong)PSAVPlayerController * avPlayerControl;
+@property (nonatomic,strong)UIButton * tableHeaderView;
+@property (nonatomic,strong)PSPlayerController * avPlayerControl;
 @end
 
 @implementation PSAVPlayerViewController
@@ -45,11 +46,74 @@
     }
 }
 
+- (UITableView*)displayTableView
+{
+    if (!_displayTableView) {
+        _displayTableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+        _displayTableView.delegate = self;
+        _displayTableView.dataSource = self;
+        _displayTableView.showsVerticalScrollIndicator = NO;
+    }
+    
+    return _displayTableView;
+}
+
+- (UIButton*)tableHeaderView
+{
+    if (!_tableHeaderView) {
+        
+        _tableHeaderView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, KScreen_Width, HalfF(400))];
+        
+        _tableHeaderView.backgroundColor = Arc4randomColor;
+        
+        [_tableHeaderView setTitle:@"点我播放" forState:(UIControlStateNormal)];
+        
+        [_tableHeaderView setTitleColor:[UIColor redColor] forState:(UIControlStateNormal)];
+        
+        [_tableHeaderView addTarget:self action:@selector(createPlayer:) forControlEvents:(UIControlEventTouchUpInside)];
+        
+    }
+    return _tableHeaderView;
+}
+
+- (PSPlayerController*)avPlayerControl
+{
+    if (! _avPlayerControl) {
+        
+        WeakSelf(ws);
+        _avPlayerControl = [[PSPlayerController alloc] initWithFrame:CGRectMake(0, 0, KScreen_Width, HalfF(400))];
+        _avPlayerControl.onPlayerControlWillGoBackBlock = ^()
+        {
+            PSLog(@"点击 返回");
+            [ws ps_PlayerButtonClick];
+        };
+        _avPlayerControl.onPlayerControlWillChangeToFullScreenModeBlock = ^()
+        {
+            PSLog(@"点击全屏");
+            
+            [ws ps_PlayerFullScreenClick];
+            
+        };
+        _avPlayerControl.onPlayerControlWillChangeToOriginalScreenModeBlock = ^()
+        {
+            PSLog(@"点击原屏");
+            
+            [ws ps_PlayerOriginalScreenClick];
+            
+        };
+        
+    }
+    
+    return _avPlayerControl;
+}
 
 //列举了两种模式结合
 
 //模式1 : 单独播放器控件，且导航栏隐藏。
 //模式2 : 和tableview 列表结合 ，且导航栏不隐藏(如果 和 tableview 结合，且在正常模式下要隐藏导航栏 ，需考虑statusbar的影响，可处理tableview 的contentInset,但全屏模式下需注意)；
+
+     //注意点： 如果使用整个设备的旋转适配，等同的，其他的视图也要做旋转适配，不单单只有视频播放器，这样子工作量就大了，UI布局简单样式时，可采用。
+//还可以选择一种方式，只是单单的做视频的旋转动画，只需要控制视频播放器的旋转，进行相关调整就可以了，这种情况，必须考虑监听设备旋转通知，不然会重复旋转。
 
 //MARK:模式1
 - (void)ps_AlonePlayer
@@ -57,7 +121,7 @@
     if ([NSThread isMainThread] == NO) {
         
         runBlockWithMain(^{
-           
+            
             [self ps_AlonePlayer];
         });
         
@@ -88,62 +152,26 @@
     }
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-
+    
     self.isNaiBarHidenMode = NO;
     
     [self.view addSubview:self.displayTableView];
     
-    self.displayTableView.tableHeaderView = self.avPlayerControl;
+    self.displayTableView.tableHeaderView = self.tableHeaderView;
+    
+}
 
+//创建播放器
+- (void)createPlayer:(UIButton*)sender
+{
+    
     self.avPlayerControl.video = self.video;
     
     self.avPlayerControl.isNaiBarHidenMode = self.isNaiBarHidenMode;
 
-
+    [self.displayTableView addSubview:self.avPlayerControl];
 }
 
-- (UITableView*)displayTableView
-{
-    if (!_displayTableView) {
-        _displayTableView = [[UITableView alloc] initWithFrame:self.view.bounds];
-        _displayTableView.delegate = self;
-        _displayTableView.dataSource = self;
-        _displayTableView.showsVerticalScrollIndicator = NO;
-    }
-    
-    return _displayTableView;
-}
-
-- (PSAVPlayerController*)avPlayerControl
-{
-    if (! _avPlayerControl) {
-        
-        WeakSelf(ws);
-        _avPlayerControl = [[PSAVPlayerController alloc] initWithFrame:CGRectMake(0, 0, KScreen_Width, HalfF(400))];
-        _avPlayerControl.onPlayerControlWillGoBackBlock = ^()
-        {
-            PSLog(@"点击 返回");
-            [ws ps_PlayerButtonClick];
-        };
-        _avPlayerControl.onPlayerControlWillChangeToFullScreenModeBlock = ^()
-        {
-            PSLog(@"点击全屏");
-            
-            [ws ps_PlayerFullScreenClick];
-            
-        };
-        _avPlayerControl.onPlayerControlWillChangeToOriginalScreenModeBlock = ^()
-        {
-            PSLog(@"点击原屏");
-            
-            [ws ps_PlayerOriginalScreenClick];
-            
-        };
-        
-    }
-    
-    return _avPlayerControl;
-}
 
 //返回( 原屏、全屏两种模式下返回 )
 - (void)ps_PlayerButtonClick

@@ -10,13 +10,13 @@
 #import "PSVideo.h"
 
 //视频播放器
-@interface PSAVPlayerController : UIView
+@interface PSPlayerController : UIView
 
-//导航栏隐藏模式
-@property(nonatomic,assign)BOOL isNaiBarHidenMode;
-
-
+//视频对象
 @property (nonatomic,strong)PSVideo * video;
+
+//TOP栏隐藏模式
+@property(nonatomic,assign)BOOL isNaiBarHidenMode;
 
 //放回
 @property (nonatomic,copy) void (^onPlayerControlWillGoBackBlock)();

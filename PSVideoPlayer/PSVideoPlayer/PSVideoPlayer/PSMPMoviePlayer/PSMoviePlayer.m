@@ -25,7 +25,7 @@
         self.frame = frame;
         
         self.view.frame = frame;
-        self.view.backgroundColor = [UIColor blackColor];
+        self.view.backgroundColor = [UIColor clearColor];
         self.controlStyle = MPMovieControlStyleNone;
         
         //音量控制控件
